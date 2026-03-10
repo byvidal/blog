@@ -1,31 +1,38 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+import { PostProvider } from "./context/PostContext";
 
 import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./ProtectedRoute";
-import { PostProvider } from "./context/PostContext";
+import LoginPages from "./pages/LoginPages";
+import PostsPage from "./pages/PostsPage";
+import PostFormPage from "./pages/PostFormPage";
+import ProtectedRutes from "./ProtectedRutes";
+import Navbar from "./components/Navbar"; // Importa el Navbar
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<h1 className="text-white">Home Page</h1>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+      <PostProvider>
+        <main className="container mx-auto px-10">
+          <BrowserRouter>
+            <Navbar /> {/* Colócalo aquí */}
+            <Routes>
+              <Route path="/" element={<h1 className="text-white text-4xl font-bold">Home Page</h1>} />
+              <Route path="/login" element={<LoginPages />} />
+              <Route path="/register" element={<RegisterPage />} />
 
-          {/* RUTAS PRIVADAS */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="/posts" element={<PostsPage />} />
-            <Route path="/add-post" element={<PostFormPage />} />
-            <Route path="/posts" element={<h1 className="text-white">Posts Page</h1>} />
-            <Route path="/add-post" element={<h1 className="text-white">New Post</h1>} />
-            <Route path="/posts/:id" element={<h1 className="text-white">Update Post</h1>} />
-            <Route path="/profile" element={<h1 className="text-white">Profile</h1>} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              <Route element={<ProtectedRutes />}>
+                <Route path="/posts" element={<PostsPage />} />
+                <Route path="/add-post" element={<PostFormPage />} />
+                <Route path="/posts/:id" element={<PostFormPage />} />
+                <Route path="/profile" element={<h1 className="text-white">Profile</h1>} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </main>
+      </PostProvider>
     </AuthProvider>
   );
 }
+
+export default App;
