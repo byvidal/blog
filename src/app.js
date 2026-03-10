@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
@@ -13,5 +14,10 @@ app.use(cookieParser());
 
 app.use(userRoutes);
 app.use(postRoutes); 
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
 
 export default app;
