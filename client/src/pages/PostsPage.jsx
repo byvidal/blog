@@ -133,12 +133,21 @@ function PostsPage() {
 
             </div>
 
-            <button
-              onClick={() => deletePost(post._id)}
-              className="text-zinc-400 hover:text-red-400 text-sm transition"
-            >
-              Eliminar
-            </button>
+            <div className="flex items-center gap-3">
+              <Link
+                to={`/posts/${post._id}`}
+                className="text-zinc-400 hover:text-indigo-400 text-sm transition"
+              >
+                Editar
+              </Link>
+
+              <button
+                onClick={() => deletePost(post._id)}
+                className="text-zinc-400 hover:text-red-400 text-sm transition"
+              >
+                Eliminar
+              </button>
+            </div>
 
           </div>
 

@@ -115,6 +115,16 @@ function LoginPage() {
             )}
           </div>
 
+          <div className="text-right -mt-1">
+            <button
+              type="button"
+              onClick={() => alert("Próximamente: recuperación de contraseña por correo")}
+              className="text-sm text-indigo-400 hover:text-indigo-300 transition"
+            >
+              ¿Olvidaste tu contraseña?
+            </button>
+          </div>
+
           <button
             type="submit"
             className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-lg transition active:scale-95 shadow-md"
