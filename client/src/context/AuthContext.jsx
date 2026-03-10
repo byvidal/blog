@@ -40,6 +40,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Función para cerrar sesión
+  const logout = () => {
+    Cookies.remove("token");
+    setIsAuthenticated(false);
+    setUser(null);
+  };
+
   // Limpiar errores después de 5 segundos
   useEffect(() => {
     if (errors.length > 0) {
@@ -84,6 +91,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         signin,
+        logout,
         user,
         isAuthenticated,
         errors,

@@ -12,12 +12,12 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser()); 
 
-app.use(userRoutes);
-app.use(postRoutes); 
-
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
 }));
+
+app.use("/api", userRoutes);
+app.use("/api", postRoutes); 
 
 export default app;
